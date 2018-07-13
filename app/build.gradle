@@ -22,11 +22,25 @@ android {
     }
 }
 
+//具体配置在根目录下的build.gradle中查看
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    //具体配置在根目录下的build.gradle中查看
+
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:support-v4:$support_version"
     implementation "com.android.support:design:$support_version"//材料设计包
+
+    //Rxjava+Retrofit
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
+
+    //Rxjava
+    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"//管理Rxjava的生命周期
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    //日志拦截器
+    compile "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 }
