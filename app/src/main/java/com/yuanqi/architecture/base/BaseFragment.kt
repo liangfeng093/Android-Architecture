@@ -9,10 +9,10 @@ import android.view.ViewGroup
 /**
  * Created by mzf on 2018/7/13.
  * Email:liangfeng093@gmail.com
- * Desc:
+ * Desc:Fragment的基类，抽取一些重复操作
  */
 abstract class BaseFragment : Fragment(), IBaseFragmentView {
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
