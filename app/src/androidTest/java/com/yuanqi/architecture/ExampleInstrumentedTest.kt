@@ -1,12 +1,12 @@
 package com.yuanqi.architecture
 
-import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-
+import android.util.Log
+import com.raizlabs.android.dbflow.sql.language.SQLite
+import com.yuanqi.architecture.feature.demo.User
+import com.yuanqi.architecture.feature.demo.User_Table
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -15,10 +15,7 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.yuanqi.architecture", appContext.packageName)
-    }
+
+
+
 }

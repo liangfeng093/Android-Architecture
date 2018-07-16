@@ -1,11 +1,12 @@
 package com.yuanqi.architecture.feature.demo
 
 import com.yuanqi.architecture.data.IDataSource
+import kotlinx.coroutines.experimental.launch
 
 /**
  * Created by mzf on 2018/7/13.
  * Email:liangfeng093@gmail.com
- * Desc:
+ * Desc:主要负责数据操作
  */
 class DemoModule {
     var remoteDataSource = object : IDataSource {
@@ -33,7 +34,10 @@ class DemoModule {
     var localDataSource = object : IDataSource {
         override fun getData(callback: IDataSource.LoadDataCallback) {
             //数据库操作(在子线程操作，避免阻塞UI)
+            //开启协程
+            var job = launch {
 
+            }
             //是否有数据
             var isData = true
 

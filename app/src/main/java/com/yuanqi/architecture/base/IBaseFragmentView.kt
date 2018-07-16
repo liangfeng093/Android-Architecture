@@ -7,7 +7,8 @@ import android.view.View
  * Email:liangfeng093@gmail.com
  * Desc:Fragment中必须实现的方法
  */
-interface IBaseFragmentView : IBaseView {
+//interface IBaseFragmentView : IBaseView<IBasePresenter> {
+interface IBaseFragmentView {
 
     /**
      * 获取布局文件

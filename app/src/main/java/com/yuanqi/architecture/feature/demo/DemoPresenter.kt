@@ -9,7 +9,8 @@ import com.yuanqi.architecture.data.IDataSource
  * Email:liangfeng093@gmail.com
  * Desc:
  */
-class DemoPresenter(val fragment: DemoFragment) : IContract.Presenter {
+class DemoPresenter(val fragment: DemoFragment) : DemoContract.Presenter {
+//class DemoPresenter(val fragment: DemoFragment) : IContract.Presenter {
 
     override fun start() {
         getData()

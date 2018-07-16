@@ -3,14 +3,15 @@ package com.yuanqi.architecture.feature.demo
 import android.view.View
 import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
-import com.yuanqi.architecture.base.IContract
 
 /**
  * Created by mzf on 2018/7/13.
  * Email:liangfeng093@gmail.com
  * Desc:
  */
-class DemoFragment : BaseFragment(), IContract.View {
+class DemoFragment : BaseFragment(), DemoContract.View {
+
+
     override fun getLayout(): Int {
         return R.layout.activity_main
     }
@@ -25,9 +26,9 @@ class DemoFragment : BaseFragment(), IContract.View {
     override fun initListener() {
     }
 
-    private var presenter: IContract.Presenter? = null
+    private var presenter: DemoContract.Presenter? = null
 
-    override fun setPresenter(presenter: IContract.Presenter) {
+    override fun setPresenter(presenter: DemoContract.Presenter) {
         this.presenter = presenter
     }
 
@@ -39,17 +40,22 @@ class DemoFragment : BaseFragment(), IContract.View {
     }
 
     override fun emptyContent() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun loading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun loadSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun loadFail() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun content() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

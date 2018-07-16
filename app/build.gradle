@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt' // required for kotlin.
+
+
 android {
     compileSdkVersion compile_sdk_version
     defaultConfig {
@@ -13,6 +16,7 @@ android {
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
     }
     buildTypes {
         release {
@@ -26,6 +30,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'//单元测试时打开注释
+    androidTestImplementation 'com.android.support.test:runner:0.4'//单元测试时打开注释
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //kotlin协程
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_launch_version"
 
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:support-v4:$support_version"
@@ -42,7 +53,11 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
     //日志拦截器
-    compile "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
-
+    //数据库
+    // Use if Kotlin user.
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 }
