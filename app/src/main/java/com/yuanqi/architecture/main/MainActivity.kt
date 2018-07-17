@@ -2,10 +2,8 @@ package com.yuanqi.architecture.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import com.raizlabs.android.dbflow.sql.language.SQLite
 import com.yuanqi.architecture.R
-import com.yuanqi.architecture.feature.demo.User
+import com.yuanqi.architecture.feature.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
     val TAG = this.javaClass.name
@@ -13,6 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var transaction = supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fl_fragment_container, LoginFragment())
+        transaction?.commit()
 
     }
 

@@ -8,7 +8,7 @@ package com.yuanqi.architecture.base
 interface IBaseView<T> {
 
     // 规定View必须要实现setPresenter方法，则View中保持对Presenter的引用。
-    fun setPresenter(presenter: T)
+//    fun setPresenter(presenter: T)
 //    var presenter: T
     /**
      * 空视图

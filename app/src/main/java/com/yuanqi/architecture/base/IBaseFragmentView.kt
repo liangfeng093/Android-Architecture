@@ -8,7 +8,12 @@ import android.view.View
  * Desc:Fragment中必须实现的方法
  */
 //interface IBaseFragmentView : IBaseView<IBasePresenter> {
-interface IBaseFragmentView {
+interface IBaseFragmentView<T> {
+
+    /**
+     *
+     */
+    fun setPresenter(presenter: T)
 
     /**
      * 获取布局文件

@@ -9,7 +9,7 @@ import com.yuanqi.architecture.base.BaseFragment
  * Email:liangfeng093@gmail.com
  * Desc:
  */
-class DemoFragment : BaseFragment(), DemoContract.View {
+class DemoFragment : BaseFragment<DemoContract.Presenter>(), DemoContract.View {
 
 
     override fun getLayout(): Int {
