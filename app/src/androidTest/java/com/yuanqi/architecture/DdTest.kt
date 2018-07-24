@@ -1,6 +1,5 @@
 package com.yuanqi.architecture
 
-import android.os.AsyncTask.execute
 import android.support.test.runner.AndroidJUnit4
 import android.util.Log
 import com.raizlabs.android.dbflow.sql.language.SQLite

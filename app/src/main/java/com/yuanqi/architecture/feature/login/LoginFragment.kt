@@ -1,11 +1,11 @@
 package com.yuanqi.architecture.feature.login
 
-import android.graphics.Typeface
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
 
@@ -56,11 +56,11 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
             var pwd = et_pwd?.text?.trim()?.toString()
             if (userName != null && pwd != null) {
                 if (userName?.isEmpty()!!) {//账号未填写，提示用户
-
+                    Toast.makeText(context, context?.resources?.getString(R.string.login_user_name_tip), Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
                 if (pwd?.isEmpty()!!) {//密码未填写，提示用户
-
+                    Toast.makeText(context, context?.resources?.getString(R.string.login_pwd_tip), Toast.LENGTH_LONG).show()
                     return@setOnClickListener
                 }
                 //对数据做好处理，避免后续逻辑做重复判断

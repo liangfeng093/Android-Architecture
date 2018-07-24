@@ -5,5 +5,9 @@
     <string name="login_user_name">请输入账号</string>
     <string name="login_pwd">请输入密码</string>
     <string name="login">登录</string>
+    <string name="login_success">登录成功</string>
+    <string name="login_fail">失败</string>
+    <string name="login_user_name_tip">账号不能为空</string>
+    <string name="login_pwd_tip">密码不能为空</string>
 
 </resources>

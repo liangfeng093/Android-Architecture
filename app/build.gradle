@@ -16,7 +16,8 @@ android {
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
+        multiDexEnabled true    //分包合并
     }
     buildTypes {
         release {
@@ -24,40 +25,100 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+//    exclude 'META-INF/NOTICE'
+//    exclude 'META-INF/LICENSE'
+//    exclude 'META-INF/LICENSE.txt'
+//    exclude 'META-INF/NOTICE.txt'
+    }
+//    dexOptions {
+//        preDexLibraries = false
+//        incremental true
+//    }true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '26.0.2'
 }
 
 //具体配置在根目录下的build.gradle中查看
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
 
-//    testImplementation 'junit:junit:4.12'//单元测试时打开注释
-//    androidTestImplementation 'com.android.support.test:runner:0.4'//单元测试时打开注释
-//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //分包合并
+    compile 'com.android.support:multidex:1.0.1'
+
+    //单元测试时打开注释
+    androidTestImplementation 'com.android.support.test:runner:0.4'
+
+    //单元测试时打开注释
+
+    //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //kotlin协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_launch_version"
-
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:support-v4:$support_version"
-    implementation "com.android.support:design:$support_version"//材料设计包
+    implementation "com.android.support:design:$support_version"
+
+    //材料设计包
 
     //Rxjava+Retrofit
+
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
 
     //Rxjava
-    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"//管理Rxjava的生命周期
+    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"
+
+    //管理Rxjava的生命周期
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
     //日志拦截器
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
     //数据库
+
     // Use if Kotlin user.
     kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+    //加密解密用到的jar包
+
+    //    compile files('libs/encrypthelper-1.6.0.jar')
+
+    //    compile files('libs/jackson-all-1.8.3.jar')
+
+    //    compile files('libs/jdom-1.0.jar')
+
+    //    compile files('libs/opencsv-1.7.jar')
+
+    //    compile files('libs/pnb50client-1.7.9.jar')
+
+    //    compile files('libs/pnblog.jar')
+
+    //    compile files('libs/hessdroid.jar')
+    compile 'cn.ty:encrypthelper:1.6.0'
+    compile 'cn.ty:pnblog:1.0.0'
+
+    //        compile 'cn.ty:pnb50client:1.7.9'
+    compile 'jdom:jdom:1.1'
+    compile 'au.com.bytecode:opencsv:2.4'
+    compile 'org.codehaus.jackson:jackson-xc:1.8.0'
+
+    // https://mvnrepository.com/artifact/com.caucho/hessian
+
+    //    compile 'com.caucho:hessian:4.0.51'
+    implementation files('libs/commons-codec-1.11.jar')
+
+    //    implementation files('libs/hessian-3.1.5.jar')
+    implementation files('libs/pnb50clientdroid-1.1.1.jar')
+    implementation files('libs/hessdroid.jar')
 }

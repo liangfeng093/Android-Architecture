@@ -1,7 +1,6 @@
 package com.yuanqi.architecture.feature.login
 
 import com.yuanqi.architecture.base.IBasePresenter
-import com.yuanqi.architecture.base.IBaseView
 
 /**
  * Created by mzf on 2018/7/17.

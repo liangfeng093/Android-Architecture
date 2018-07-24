@@ -27,12 +27,4 @@ abstract class BaseFragment<T> : Fragment(), IBaseFragmentView<T> {
         return view
     }
 
-
-    /*override fun onResume() {
-        super.onResume()
-        if (mPresenter == null) {
-            setPresenter(T())
-        }
-    }*/
-
 }

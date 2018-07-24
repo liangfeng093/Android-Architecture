@@ -1,7 +1,9 @@
 package com.yuanqi.architecture
 
 import android.util.Log
+import com.google.gson.Gson
 import com.raizlabs.android.dbflow.sql.language.SQLite
+import com.yuanqi.architecture.feature.demo.TestRequestBody
 import com.yuanqi.architecture.feature.demo.User
 import org.junit.Test
 
@@ -15,6 +17,16 @@ import org.junit.Assert.*
 class ExampleUnitTest {
 
     val TAG = this.javaClass.name
+
+    @Test
+    fun testBodyToJson() {
+
+        var list = mutableListOf<TestRequestBody.Body>()
+        var body = TestRequestBody(TestRequestBody.Authorization("", "", "", ""), list)
+        var gs = Gson()
+        var bodyJson = gs?.toJson(body)
+        Log.e(TAG, ">>>>>>>bodyJson:" + bodyJson)
+    }
 
     @Test
     fun addition_isCorrect() {
@@ -36,4 +48,6 @@ class ExampleUnitTest {
 
         Log.e(TAG, ">>>>>>>list?.size:" + list?.size)
     }
+
+
 }

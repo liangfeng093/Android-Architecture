@@ -1,6 +1,9 @@
 package com.yuanqi.architecture.network
 
 import android.util.Log
+import com.yuanqi.architecture.feature.demo.TestBody
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,7 +30,7 @@ class RemoteDateManger {
         //拦截器（打印网络请求log）
         var logInterceptor: HttpLoggingInterceptor = HttpLoggingInterceptor(HttpLogger())
         logInterceptor.level = HttpLoggingInterceptor.Level.BASIC
-        var httpInterceptor = HttpInterceptor()
+//        var httpInterceptor = HttpInterceptor()
         var okHttpClient: OkHttpClient = OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)//设置超时时间
                 .readTimeout(10, TimeUnit.SECONDS)
@@ -37,7 +40,8 @@ class RemoteDateManger {
                 .build()
 
         retrofit = Retrofit.Builder()
-                .baseUrl(RetrofitService.BaseURL)
+                .baseUrl(RetrofitService.testBaseURL)
+//                .baseUrl(RetrofitService.BaseURL)
                 .addConverterFactory(GsonConverterFactory.create())//配置gson转换
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//配置rxjava转换
                 .client(okHttpClient)
@@ -55,7 +59,7 @@ class RemoteDateManger {
 
     }
 
-    class HttpInterceptor : Interceptor {
+   /* class HttpInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain?): okhttp3.Response {
             Log.e("HttpInterceptor", "")
             var builder = chain?.request()?.newBuilder()
@@ -63,14 +67,14 @@ class RemoteDateManger {
             var request = builder?.addHeader("content-type", "text/html;charset=UTF-8")?.build()
             return chain?.proceed(request)!!
         }
-    }
+    }*/
 
 
     //相当于静态方法
     companion object {
         var retrofit: RetrofitService? = null
         var remoteDataManager: RemoteDateManger? = null
-
+        val TAG = this.javaClass.name
         //使用单例模式，避免重复创建
         fun getInstance(): RemoteDateManger? {
             if (remoteDataManager == null) {
@@ -83,6 +87,25 @@ class RemoteDateManger {
             }
             return remoteDataManager
         }
+
+
+        fun idiomDictionary(word: String, observable: Observers.IdiomDictionaryObserver) {
+            var body = TestBody(word, "3271718628314bcf451ba32aba5c014f")
+            Log.e(TAG, ">>>>>>>body:" + body)
+            retrofit?.idiomDictionary(body)
+                    ?.subscribeOn(Schedulers.io())//IO线程订阅
+                    ?.observeOn(AndroidSchedulers.mainThread())//主线程回调
+                    ?.subscribe(observable)
+        }
+
+        fun idiomDictionary1(word: String, observable: Observers.IdiomDictionaryObserver) {
+            retrofit?.idiomDictionary1("一叶知秋", "3271718628314bcf451ba32aba5c014f")
+                    ?.subscribeOn(Schedulers.io())//IO线程订阅
+                    ?.observeOn(AndroidSchedulers.mainThread())//主线程回调
+                    ?.subscribe(observable)
+        }
+
+
     }
 
 }
