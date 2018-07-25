@@ -10,4 +10,13 @@
     <string name="login_user_name_tip">账号不能为空</string>
     <string name="login_pwd_tip">密码不能为空</string>
 
+
+    <!--注册界面-->
+    <string name="register">注册</string>
+    <string name="register_real_name">请输入昵称</string>
+    <string name="register_user_name">请输入用户名</string>
+    <string name="register_pwd_one">请输入密码</string>
+    <string name="register_pwd_two">请再次输入密码</string>
+
+
 </resources>

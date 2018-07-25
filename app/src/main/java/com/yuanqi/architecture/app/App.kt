@@ -1,12 +1,14 @@
 package com.yuanqi.architecture.app
 
-import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
-import com.raizlabs.android.dbflow.config.FlowManager
+import android.util.Log
 import com.raizlabs.android.dbflow.config.DatabaseConfig
 import com.raizlabs.android.dbflow.config.FlowConfig
+import com.raizlabs.android.dbflow.config.FlowManager
+import com.yuanqi.architecture.im.XmppManager
+import org.jivesoftware.smack.android.AndroidSmackInitializer
 
 
 /**
@@ -33,6 +35,9 @@ class App : MultiDexApplication() {
                         .build())
                 .build())
 
+        Log.e(XmppManager.TAG, ">>>>>>>开始连接:")
+        AndroidSmackInitializer()?.initialize()
+        XmppManager.getInstance()
 
     }
 

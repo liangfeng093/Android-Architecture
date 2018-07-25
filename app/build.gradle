@@ -51,6 +51,8 @@ dependencies {
 
     //分包合并
     compile 'com.android.support:multidex:1.0.1'
+    //
+    compile 'org.greenrobot:eventbus:3.0.0'
 
     //单元测试时打开注释
     androidTestImplementation 'com.android.support.test:runner:0.4'
@@ -90,35 +92,12 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
-    //加密解密用到的jar包
+    //xmpp即时通讯包
+//    compile "org.igniterealtime.smack:smack-android:4.2.0"
+//    compile "org.igniterealtime.smack:smack-tcp:4.2.0"
+    compile "org.igniterealtime.smack:smack-android-extensions:4.2.0"
+    compile "org.igniterealtime.smack:smack-experimental:4.2.0"
+    compile "org.igniterealtime.smack:smack-tcp:4.2.0"
 
-    //    compile files('libs/encrypthelper-1.6.0.jar')
 
-    //    compile files('libs/jackson-all-1.8.3.jar')
-
-    //    compile files('libs/jdom-1.0.jar')
-
-    //    compile files('libs/opencsv-1.7.jar')
-
-    //    compile files('libs/pnb50client-1.7.9.jar')
-
-    //    compile files('libs/pnblog.jar')
-
-    //    compile files('libs/hessdroid.jar')
-    compile 'cn.ty:encrypthelper:1.6.0'
-    compile 'cn.ty:pnblog:1.0.0'
-
-    //        compile 'cn.ty:pnb50client:1.7.9'
-    compile 'jdom:jdom:1.1'
-    compile 'au.com.bytecode:opencsv:2.4'
-    compile 'org.codehaus.jackson:jackson-xc:1.8.0'
-
-    // https://mvnrepository.com/artifact/com.caucho/hessian
-
-    //    compile 'com.caucho:hessian:4.0.51'
-    implementation files('libs/commons-codec-1.11.jar')
-
-    //    implementation files('libs/hessian-3.1.5.jar')
-    implementation files('libs/pnb50clientdroid-1.1.1.jar')
-    implementation files('libs/hessdroid.jar')
 }

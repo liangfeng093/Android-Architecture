@@ -22,8 +22,9 @@ allprojects {
         jcenter()
         maven { url "https://www.jitpack.io" }
         mavenCentral()
-        maven{url "http://192.168.0.24:8081/nexus/content/groups/public/"}
-        maven{url "https://mvnrepository.com/artifact/com.caucho/hessian"}
+        maven { url "http://192.168.0.24:8081/nexus/content/groups/public/" }
+        maven { url "https://mvnrepository.com/artifact/com.caucho/hessian" }
+//        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
 }
 
