@@ -15,9 +15,10 @@ class HospitalListAdapter : BaseQuickAdapter<Hospital, BaseViewHolder> {
     var context: Context? = null
 
 
-    constructor(context: Context, layoutResId: Int, data: MutableList<Hospital>?) : super(layoutResId, data) {
+    constructor(context: Context?, layoutResId: Int, data: MutableList<Hospital>?) : super(layoutResId, data) {
+        this.context = context
         this.setOnItemClickListener { adapter, view, position ->
-            context.startActivity(Intent(context, WebActivity::class.java))
+            context?.startActivity(Intent(context, WebActivity::class.java))
         }
     }
 

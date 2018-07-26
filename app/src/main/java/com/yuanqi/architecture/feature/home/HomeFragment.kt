@@ -4,9 +4,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.LinearLayout
+import cn.levey.bannerlib.RxBanner
 import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
-import com.yuanqi.architecture.feature.login.LoginPresenter
 
 /**
  * Created by mzf on 2018/7/26.
@@ -17,7 +17,12 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
     //h5链接(测试)
     val testUrl = "http://t1451test.1451cn.com/smejhomepage/homepage.html?wqXCm8OAwqHCsnRtZmxiY3ZlbmxraGZ2a2FvaHhXwrLCl8KlwqfCu8KfwrTClnJswq3CgmlpZWtianJoZmRtb2h9W8KfwpnCnsKrbuWOpOa1oOeFqFrCuMKVwq5vZntxd25qbGxnZHNawqvCmMKqdWh7ZQ=="
+    val picUrl1 = "http://t1451test.1451cn.com/smejhomepage/style1/images/k1_index/1.jpg"
+    val picUrl2 = "http://t1451test.1451cn.com/smejhomepage/style1/images/k1_index/2.jpg"
+    val picUrl3 = "http://t1451test.1451cn.com/smejhomepage/style1/images/k1_index/3.jpg"
+    val picUrl4 = "http://t1451test.1451cn.com/smejhomepage/style1/images/k1_index/4.jpg"
 
+    val testPics = arrayListOf<String>(picUrl1, picUrl2, picUrl3, picUrl4)
 
     //一级功能
     var ll_reservation_register: LinearLayout? = null
@@ -37,6 +42,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     var ll_more: LinearLayout? = null
     var rv_hospital: RecyclerView? = null
 
+    var rx_banner: RxBanner? = null
+
     override fun setPresenter(presenter: HomeContract.Presenter) {
         mPresenter = presenter
     }
@@ -47,6 +54,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
     override fun onResume() {
         super.onResume()
+//        zBanner?.star(1000, 2000)
         if (mPresenter == null) {
             setPresenter(HomePresenter(this))
         }
@@ -66,6 +74,12 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         ll_leave_hospital_list = view?.findViewById(R.id.ll_leave_hospital_list)
         ll_price_demand = view?.findViewById(R.id.ll_price_demand)
         ll_more = view?.findViewById(R.id.ll_more)
+
+        rx_banner = view?.findViewById(R.id.rx_banner)
+        rx_banner?.setLoader(GlideLoader())
+//                ?.setConfig()
+                ?.setDatas(testPics)
+                ?.start()
         rv_hospital = view?.findViewById(R.id.rv_hospital)
 
         var hospitals = mutableListOf<Hospital>()

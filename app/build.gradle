@@ -53,7 +53,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
     //单元测试时打开注释
-    androidTestImplementation 'com.android.support.test:runner:0.4'
+//    androidTestImplementation 'com.android.support.test:runner:0.4'
 
     //单元测试时打开注释
 
@@ -75,10 +75,10 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
 
     //Rxjava
-    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"
+//    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"
 
     //管理Rxjava的生命周期
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+//    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
     //日志拦截器
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
@@ -96,4 +96,9 @@ dependencies {
 
     //进度条
     implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    //banner,自带Rxjava包
+    implementation 'com.github.leveychen:RxBanner:1.0.5'
+    //图片加载
+    implementation 'com.github.bumptech.glide:glide:4.1.1'
+
 }
