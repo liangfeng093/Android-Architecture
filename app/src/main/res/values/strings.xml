@@ -56,6 +56,12 @@
 
 
     <!-- -->
+    <!--    web start  -->
+    <string name="web_advance">前进</string>
+    <string name="web_back">后退</string>
+    <string name="web_refresh">刷新</string>
+
+    <!--    web end  -->
 
 
 </resources>

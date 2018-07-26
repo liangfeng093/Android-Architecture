@@ -15,6 +15,10 @@ import com.yuanqi.architecture.feature.login.LoginPresenter
  */
 class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
+    //h5链接(测试)
+    val testUrl = "http://t1451test.1451cn.com/smejhomepage/homepage.html?wqXCm8OAwqHCsnRtZmxiY3ZlbmxraGZ2a2FvaHhXwrLCl8KlwqfCu8KfwrTClnJswq3CgmlpZWtianJoZmRtb2h9W8KfwpnCnsKrbuWOpOa1oOeFqFrCuMKVwq5vZntxd25qbGxnZHNawqvCmMKqdWh7ZQ=="
+
+
     //一级功能
     var ll_reservation_register: LinearLayout? = null
     var ll_today_register: LinearLayout? = null
@@ -68,12 +72,14 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
         var i = 0
         while (i < 10) {
-            hospitals?.add(Hospital())
+            var hospital = Hospital()
+            hospital?.htmlLink = testUrl
+            hospitals?.add(hospital)
             i++
         }
 
         rv_hospital?.layoutManager = LinearLayoutManager(this.activity)
-        rv_hospital?.adapter = HospitalListAdapter(R.layout.item_home_hospital, hospitals)
+        rv_hospital?.adapter = HospitalListAdapter(this.activity, R.layout.item_home_hospital, hospitals)
     }
 
     override fun initData() {

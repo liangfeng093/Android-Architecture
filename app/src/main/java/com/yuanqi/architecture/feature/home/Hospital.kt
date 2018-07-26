@@ -7,6 +7,10 @@ package com.yuanqi.architecture.feature.home
  */
 class Hospital {
     /**
+     * h5小程序链接
+     */
+    var htmlLink = ""
+    /**
      *医院logo图片链接
      */
     var logoPicLink = ""

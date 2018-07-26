@@ -94,4 +94,6 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$recyclerview_version"
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$recyclerview_adapter_version"
 
+    //进度条
+    implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 }

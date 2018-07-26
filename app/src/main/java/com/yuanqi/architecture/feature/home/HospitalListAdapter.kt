@@ -1,5 +1,7 @@
 package com.yuanqi.architecture.feature.home
 
+import android.content.Context
+import android.content.Intent
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
@@ -10,9 +12,12 @@ import com.chad.library.adapter.base.BaseViewHolder
  */
 class HospitalListAdapter : BaseQuickAdapter<Hospital, BaseViewHolder> {
 
-    constructor(layoutResId: Int, data: MutableList<Hospital>?) : super(layoutResId, data) {
-        this.setOnItemClickListener { adapter, view, position ->
+    var context: Context? = null
 
+
+    constructor(context: Context, layoutResId: Int, data: MutableList<Hospital>?) : super(layoutResId, data) {
+        this.setOnItemClickListener { adapter, view, position ->
+            context.startActivity(Intent(context, WebActivity::class.java))
         }
     }
 
