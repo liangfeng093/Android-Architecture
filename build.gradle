@@ -22,8 +22,8 @@ allprojects {
         jcenter()
         maven { url "https://www.jitpack.io" }
         mavenCentral()
-        maven{url "http://192.168.0.24:8081/nexus/content/groups/public/"}
-        maven{url "https://mvnrepository.com/artifact/com.caucho/hessian"}
+        maven { url "http://192.168.0.24:8081/nexus/content/groups/public/" }
+        maven { url "https://mvnrepository.com/artifact/com.caucho/hessian" }
     }
 }
 
@@ -49,4 +49,6 @@ ext {
     logging_interceptor_version = '3.5.0'
 
     dbflow_version = "4.2.4"//数据库版本
+    recyclerview_version = "26.1.0"//recyclerview版本
+    recyclerview_adapter_version = "2.9.34"//recyclerview适配器版本
 }

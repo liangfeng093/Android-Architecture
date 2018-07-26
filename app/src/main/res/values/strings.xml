@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Architecture</string>
+    <string name="app_name">医万佳</string>
 
     <!--登录界面-->
     <string name="login_user_name">请输入账号</string>
@@ -9,5 +9,53 @@
     <string name="login_fail">失败</string>
     <string name="login_user_name_tip">账号不能为空</string>
     <string name="login_pwd_tip">密码不能为空</string>
+
+    <!--主界面_底部工具栏-->
+    <string name="home_bottom_home">首页</string>
+    <string name="home_bottom_services">服务</string>
+    <string name="home_bottom_tool">工具</string>
+    <string name="home_bottom_me">我的</string>
+
+
+    <!--主界面_顶部_actionBar-->
+    <string name="home_top_location">武汉</string>
+    <string name="home_top_search_hint">请输入医院、医生、科室、疾病搜索</string>
+    <string name="home_top_scan_code">扫一扫</string>
+
+    <!--主界面一级功能-->
+    <string name="home_one_level_1">预约挂号</string>
+    <string name="home_one_level_2">当天挂号</string>
+    <string name="home_one_level_3">门诊缴费</string>
+    <string name="home_one_level_4">报告单</string>
+
+    <!--主界面二级功能-->
+    <string name="home_secondary_1">智能导诊</string>
+    <string name="home_secondary_2">住院预缴</string>
+    <string name="home_secondary_3">检验报告单</string>
+    <string name="home_secondary_4">医院介绍</string>
+    <string name="home_secondary_5">一日清单</string>
+    <string name="home_secondary_6">出院清单</string>
+    <string name="home_secondary_7">物价查询</string>
+    <string name="home_secondary_8">更多功能</string>
+
+    <!--主界面一级功能_医生相关-->
+    <string name="home_one_level_doctor_1">在线问诊</string>
+    <string name="home_one_level_doctor_2">在线咨询医生</string>
+    <string name="home_one_level_doctor_3">家庭医生</string>
+    <string name="home_one_level_doctor_4">自己专属医生</string>
+
+
+    <!-- 医院列表_条目信息 -->
+    <string name="home_hospital_list">医院列表</string>
+    <string name="home_hospital_list_item_level">三甲</string>
+    <string name="home_hospital_list_item_feature_0">宜昌市中心人民医院</string>
+    <string name="home_hospital_list_item_feature_1">挂号</string>
+    <string name="home_hospital_list_item_feature_2">门诊缴费</string>
+    <string name="home_hospital_list_item_feature_3">查报告单</string>
+    <string name="home_hospital_list_item_feature_4">地址:宜昌市夷陵区夷陵大道夷陵街183号</string>
+
+
+    <!-- -->
+
 
 </resources>

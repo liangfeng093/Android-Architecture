@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_intelligent_navigation"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_intelligent_navigation" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_hospitalization_payment"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_hospitalization_advance_payment" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_inspect_report_card"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_inspect_report_card" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_hospital_introduction"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_hospital_introduction" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_4" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_one_day_list"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_one_day_list" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_leave_hospital_list"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_leave_hospital_list" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_6" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_price_demand"
+            style="@style/home_secondary_container">
+
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_price_demand" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_7" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_more"
+            style="@style/home_secondary_container">
+
+            <ImageView
+                style="@style/home_secondary_iv"
+                android:src="@mipmap/home_secondary_more" />
+
+            <TextView
+                style="@style/home_secondary_tv"
+                android:text="@string/home_secondary_8" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

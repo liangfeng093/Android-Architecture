@@ -3,4 +3,35 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--分割线-->
+    <color name="divide_line">#f5f5f5</color>
+
+
+    <!--底部导航栏-->
+    <color name="home_bottom_toolbar_tv_normal">#b2b8c1</color>
+    <color name="home_bottom_toolbar_tv_select">#34b9b4</color>
+
+    <!--顶部actionBar -->
+    <color name="home_top_actionbar_tv">#666666</color>
+    <color name="home_top_actionbar_bg_search">#f6f6f6</color>
+    <color name="home_top_actionbar_search_et">#999999</color>
+
+    <!--一级功能-->
+    <color name="home_one_level_tv">#555555</color>
+
+
+    <!--二级功能-->
+    <color name="home_secondary_tv">#999999</color>
+
+    <!--home主页医院列表-->
+    <color name="home_hospital_list_level_bg">#34b9b4</color>
+    <color name="home_hospital_list_feature_1_bg">#eaf3fb</color>
+    <color name="home_hospital_list_feature_1_tv">#6699de</color>
+    <color name="home_hospital_list_feature_2_bg">#fdf0e7</color>
+    <color name="home_hospital_list_feature_2_tv">#ef812c</color>
+    <color name="home_hospital_list_feature_3_bg">#eff7e6</color>
+    <color name="home_hospital_list_feature_3_tv">#88c04f</color>
+
+
 </resources>

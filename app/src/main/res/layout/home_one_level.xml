@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_reservation_register"
+        style="@style/one_level_container">
+
+        <ImageView
+            style="@style/one_level_iv"
+            android:src="@mipmap/home_one_reservation_register" />
+
+        <TextView
+            style="@style/one_level_tv"
+            android:text="@string/home_one_level_1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_today_register"
+        style="@style/one_level_container">
+
+        <ImageView
+            style="@style/one_level_iv"
+            android:src="@mipmap/home_one_today_register" />
+
+        <TextView
+            style="@style/one_level_tv"
+            android:text="@string/home_one_level_2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_outpatient_payment"
+        style="@style/one_level_container">
+
+        <ImageView
+            style="@style/one_level_iv"
+            android:src="@mipmap/home_one_outpatient_payment" />
+
+        <TextView
+            style="@style/one_level_tv"
+            android:text="@string/home_one_level_3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_report_card"
+        style="@style/one_level_container">
+
+        <ImageView
+            style="@style/one_level_iv"
+            android:src="@mipmap/home_one_report_card" />
+
+        <TextView
+            style="@style/one_level_tv"
+            android:text="@string/home_one_level_4" />
+    </LinearLayout>
+
+
+</LinearLayout>
