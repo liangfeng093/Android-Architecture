@@ -2,76 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="93dp"
-    android:layout_marginBottom="30dp">
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="5dp">
 
     <ImageView
         android:id="@+id/iv_hospital_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:src="@mipmap/hospital_icon" />
 
     <TextView
-
-        android:id="@+id/tv_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:id="@+id/tv_level"
         android:layout_marginTop="5dp"
+        style="@style/item_hospital_list_features"
         android:layout_toRightOf="@+id/iv_hospital_icon"
-        android:background="@drawable/bg_home_hospital_list_item_level"
-        android:padding="2dp"
         android:text="@string/home_hospital_list_item_level"
-        android:textColor="#fff"
-        android:textSize="13sp" />
+        android:textColor="#fff" />
 
     <TextView
         android:id="@+id/tv_name"
+        android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/tv_level"
-        android:text="@string/home_hospital_list_item_feature_0" />
+        android:text="@string/home_hospital_list_item_feature_0"
+        android:textColor="@color/home_one_level_tv"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_feature_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_level"
+        style="@style/item_hospital_list_features"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_level"
         android:layout_toRightOf="@+id/iv_hospital_icon"
         android:background="@drawable/bg_home_hospital_list_item_feature_1"
-        android:padding="2dp"
         android:text="@string/home_hospital_list_item_feature_1"
         android:textColor="@color/home_hospital_list_feature_1_tv" />
 
     <TextView
         android:id="@+id/tv_feature_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_level"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
+
+        style="@style/item_hospital_list_features"
+        android:layout_below="@+id/tv_level"
         android:layout_toRightOf="@+id/tv_feature_1"
         android:background="@drawable/bg_home_hospital_list_item_feature_2"
-        android:padding="2dp"
-
         android:text="@string/home_hospital_list_item_feature_2"
         android:textColor="@color/home_hospital_list_feature_2_tv" />
 
     <TextView
         android:id="@+id/tv_feature_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_level"
-        android:layout_marginLeft="5dp"
+        style="@style/item_hospital_list_features"
         android:layout_marginTop="10dp"
+
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/tv_level"
         android:layout_toRightOf="@+id/tv_feature_2"
         android:background="@drawable/bg_home_hospital_list_item_feature_3"
-        android:padding="2dp"
         android:text="@string/home_hospital_list_item_feature_3"
         android:textColor="@color/home_hospital_list_feature_3_tv" />
 
@@ -81,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_feature_1"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/iv_hospital_icon"
         android:text="@string/home_hospital_list_item_feature_4"
         android:textColor="@color/home_top_actionbar_search_et"

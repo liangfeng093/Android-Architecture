@@ -19,10 +19,12 @@
         <LinearLayout style="@style/one_level_doctor_container">
 
             <TextView
+                android:textColor="@color/home_one_level_tv"
                 style="@style/one_level_doctor_tv_1"
                 android:text="@string/home_one_level_doctor_1" />
 
             <TextView
+                android:textColor="@color/home_secondary_tv"
                 style="@style/home_one_level_doctor_2"
                 android:text="@string/home_one_level_doctor_2" />
 
@@ -49,9 +51,11 @@
 
             <TextView
                 style="@style/one_level_doctor_tv_1"
+                android:textColor="@color/home_one_level_tv"
                 android:text="@string/home_one_level_doctor_3" />
 
             <TextView
+                android:textColor="@color/home_secondary_tv"
                 style="@style/home_one_level_doctor_2"
                 android:text="@string/home_one_level_doctor_4" />
 

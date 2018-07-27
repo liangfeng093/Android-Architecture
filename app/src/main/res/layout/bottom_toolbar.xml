@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="54dp"
     android:orientation="horizontal">
 
 
     <RelativeLayout
+        android:layout_marginTop="2dp"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -17,6 +18,7 @@
 
         <TextView
             style="@style/home_bottom_toolbar_tv"
+
             android:layout_below="@+id/iv_home"
             android:text="@string/home_bottom_home"
             android:textColor="@color/home_bottom_toolbar_tv_select" />
@@ -26,6 +28,8 @@
 
     <RelativeLayout
         android:layout_width="0dp"
+        android:layout_marginTop="2dp"
+
         android:layout_height="match_parent"
         android:layout_weight="1">
 
@@ -44,6 +48,8 @@
 
     <RelativeLayout
         android:layout_width="0dp"
+        android:layout_marginTop="2dp"
+
         android:layout_height="match_parent"
         android:layout_weight="1">
 
@@ -60,6 +66,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginTop="2dp"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
