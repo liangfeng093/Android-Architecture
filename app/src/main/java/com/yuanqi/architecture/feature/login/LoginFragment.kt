@@ -57,7 +57,8 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
 
     override fun initListener() {
         btn_login?.setOnClickListener {
-            XmppManager.login("mzf","123")
+//            XmppManager.login("rzf","123")
+            XmppManager.login("xzl","123")
             /*var userName = et_user_name?.text?.trim()?.toString()
             var pwd = et_pwd?.text?.trim()?.toString()
             if (userName != null && pwd != null) {

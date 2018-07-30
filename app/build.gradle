@@ -51,6 +51,7 @@ dependencies {
 
     //分包合并
     compile 'com.android.support:multidex:1.0.1'
+
     //
     compile 'org.greenrobot:eventbus:3.0.0'
 
@@ -93,11 +94,14 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
     //xmpp即时通讯包
-//    compile "org.igniterealtime.smack:smack-android:4.2.0"
-//    compile "org.igniterealtime.smack:smack-tcp:4.2.0"
-    compile "org.igniterealtime.smack:smack-android-extensions:4.2.0"
-    compile "org.igniterealtime.smack:smack-experimental:4.2.0"
-    compile "org.igniterealtime.smack:smack-tcp:4.2.0"
 
+    //    compile "org.igniterealtime.smack:smack-android:4.2.0"
 
+    //    compile "org.igniterealtime.smack:smack-tcp:4.2.0"
+    compile 'org.igniterealtime.smack:smack-android-extensions:4.2.0'
+    compile 'org.igniterealtime.smack:smack-experimental:4.2.0'
+    compile 'org.igniterealtime.smack:smack-tcp:4.2.0'
+
+    //xml解析
+    compile 'com.github.smart-fun:XmlToJson:1.4.4'
 }

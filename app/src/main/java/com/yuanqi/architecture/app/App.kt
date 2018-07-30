@@ -37,7 +37,7 @@ class App : MultiDexApplication() {
 
         Log.e(XmppManager.TAG, ">>>>>>>开始连接:")
         AndroidSmackInitializer()?.initialize()
-        XmppManager.getInstance()
+        XmppManager.getInstance(this)
 
     }
 

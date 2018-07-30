@@ -20,8 +20,14 @@ class XmppConfig {
         val hostAddress = "192.168.0.135"
         /**
          * openfire端口号
+         * 纯文本连接端口号
          */
-        val port = 5222
+        val portText = 5222
+        /**
+         * openfire端口号
+         * 加密连接端口号
+         */
+        val portEncryption = 5223
 
         /**
          *
