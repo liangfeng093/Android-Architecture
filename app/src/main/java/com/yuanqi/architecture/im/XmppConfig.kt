@@ -7,7 +7,6 @@ package com.yuanqi.architecture.im
  */
 class XmppConfig {
     companion object {
-
         /**
          * openfire服务器的服务器名称(主机名)
          * domain是配置openfire服务器时填写的域
@@ -28,10 +27,5 @@ class XmppConfig {
          * 加密连接端口号
          */
         val portEncryption = 5223
-
-        /**
-         *
-         */
-
     }
 }

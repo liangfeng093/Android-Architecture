@@ -405,11 +405,9 @@ class XmppManager {
          *
          */
         fun sendMessage(jid: EntityBareJid): Chat? {
-//        fun sendMessage(jid: String): Chat? {
             Log.e(TAG, ">>>>>>>jid是不是isEmpty:" + jid?.isEmpty())
             connect?.let { con ->
                 ChatManager.getInstanceFor(con)?.chatWith(jid)?.let { chat ->
-                    //                ChatManager.getInstanceFor(con)?.chatWith(JidCreate.entityBareFrom(jid))?.let { chat ->
                     chat?.send("hello word")
                     return chat
                 }
