@@ -12,7 +12,7 @@ class XmppConfig {
          * openfire服务器的服务器名称(主机名)
          * domain是配置openfire服务器时填写的域
          */
-        val domain = "192.168.0.135"
+        val domain = "openfirewebsever"
         /**
          * openfire服务器的主机IP
          * 测试环境下为本机(电脑)的IP

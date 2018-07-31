@@ -13,6 +13,10 @@
 
     <!--注册界面-->
     <string name="register">注册</string>
+    <string name="register_add_friend">添加好友</string>
+    <string name="register_delete_friend">删除好友</string>
+    <string name="register_get_friend_list">获取好友列表</string>
+    <string name="register_send_message">发送消息</string>
     <string name="register_real_name">请输入昵称</string>
     <string name="register_user_name">请输入用户名</string>
     <string name="register_pwd_one">请输入密码</string>

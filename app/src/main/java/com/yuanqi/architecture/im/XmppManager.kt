@@ -8,15 +8,23 @@ import com.yuanqi.architecture.feature.register.IQBean
 import fr.arnaudguyon.xmltojsonlib.XmlToJson
 import kotlinx.coroutines.experimental.launch
 import org.jivesoftware.smack.*
+import org.jivesoftware.smack.chat2.Chat
+import org.jivesoftware.smack.chat2.ChatManager
+import org.jivesoftware.smack.chat2.IncomingChatMessageListener
+import org.jivesoftware.smack.chat2.OutgoingChatMessageListener
 import org.jivesoftware.smack.filter.AndFilter
-import org.jivesoftware.smack.filter.PacketIDFilter
 import org.jivesoftware.smack.filter.StanzaTypeFilter
 import org.jivesoftware.smack.packet.IQ
 import org.jivesoftware.smack.packet.Message
 import org.jivesoftware.smack.packet.Presence
 import org.jivesoftware.smack.packet.Stanza
+import org.jivesoftware.smack.roster.Roster
+import org.jivesoftware.smack.roster.RosterEntry
+import org.jivesoftware.smack.roster.RosterListener
 import org.jivesoftware.smack.tcp.XMPPTCPConnection
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration
+import org.jxmpp.jid.EntityBareJid
+import org.jxmpp.jid.Jid
 import org.jxmpp.jid.impl.JidCreate
 import org.jxmpp.jid.parts.Localpart
 import java.io.IOException
@@ -27,7 +35,6 @@ import java.security.cert.CertificateException
 import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
-import com.yuanqi.architecture.im.AccountManager
 
 /**
  * Created by mzf on 2018/7/24.
@@ -60,7 +67,7 @@ class XmppManager {
                     ?.setSendPresence(true)
 //                    ?.setSecurityMode(ConnectionConfiguration.SecurityMode.required)//
 //                    ?.setSecurityMode(ConnectionConfiguration.SecurityMode.ifpossible)//
-                    ?.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)//安全模式
+                    ?.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)//非安全模式
                     ?.setDebuggerEnabled(true)
 
 
@@ -105,30 +112,12 @@ class XmppManager {
             var iqFilter = AndFilter(StanzaTypeFilter(IQ::class.java))
             var presenceFilter = AndFilter(StanzaTypeFilter(Presence::class.java))
 
-            //
-//                        var myCollector =
-            //注册监听器
-            var registerListener = object : StanzaListener {
-                override fun processStanza(packet: Stanza?) {
-                    //xml转json
-                    var xmlString = packet?.toXML()?.toString()
-                    var xmlToJson = XmlToJson.Builder(xmlString!!).build()
-                    //json转对象
-                    var result = Gson().fromJson(xmlToJson?.toString(), IQBean::class.java)
-                    if (result?.iq?.type?.equals(IQ.Type.result)!!) {//响应成功
-                        Log.e(TAG, "registerListener>>>>>>>注册成功")
-                    }
-
-                }
-            }
-
             //数据包监听器
             var stanzaListener = object : StanzaListener {
                 override fun processStanza(packet: Stanza?) {
                     //xml转json
                     var xmlString = packet?.toXML()?.toString()
                     var xmlToJson = XmlToJson.Builder(xmlString!!).build()
-//                    Log.e(TAG, "connect>>>>>>>数据包监听器,监听到数据包xmlToJson:" + xmlToJson)
                     //json转对象
                     var result = Gson().fromJson(xmlToJson?.toString(), IQBean::class.java)
                     Log.e(TAG, "connect>>>>>>>数据包监听器,监听到数据包xmlString:" + xmlString)
@@ -137,18 +126,11 @@ class XmppManager {
                         Log.e(TAG, ">>>>>>>注册成功:")
                     }
                 }
-
             }
 
             connect?.addAsyncStanzaListener(stanzaListener, messageFilter)
             connect?.addAsyncStanzaListener(stanzaListener, presenceFilter)
             connect?.addAsyncStanzaListener(stanzaListener, iqFilter)
-//            connect?.addAsyncStanzaListener(registerListener, registerFilter)
-
-
-            //
-//            connect?.addPacketSendingListener(object :)
-
 
             //添加连接监听器
             connect?.addConnectionListener(object : ConnectionListener {
@@ -192,6 +174,57 @@ class XmppManager {
                 }
             })
 
+            //添加名册(好友列表)监听
+            connect?.let { con ->
+                Roster.getInstanceFor(con)?.addRosterListener(object : RosterListener {
+                    //删除好友回调
+                    override fun entriesDeleted(addresses: MutableCollection<Jid>?) {
+                        Log.e(TAG, "entriesUpdated>>>>>>>删除好友:" + addresses?.first())
+                    }
+
+                    override fun presenceChanged(presence: Presence?) {
+                        Log.e(TAG, "presenceChanged>>>>>>>status:" + presence?.status)
+                        Log.e(TAG, "presenceChanged>>>>>>>priority:" + presence?.priority)
+                    }
+
+                    //更新好友列表回调
+                    override fun entriesUpdated(addresses: MutableCollection<Jid>?) {
+                        Log.e(TAG, "entriesUpdated>>>>>>>好友列表更新:" + addresses?.first())
+
+                    }
+
+                    //添加好友
+                    override fun entriesAdded(addresses: MutableCollection<Jid>?) {
+                        Log.e(TAG, "entriesAdded>>>>>>>添加好友:" + addresses?.first())
+
+                    }
+                })
+            }
+
+            //添加会话监听器
+            connect?.let { con ->
+                //接收消息监听
+                ChatManager.getInstanceFor(con)?.addIncomingListener(object : IncomingChatMessageListener {
+                    override fun newIncomingMessage(from: EntityBareJid?, message: Message?, chat: Chat?) {
+                        Log.e(TAG, "newIncomingMessage>>>>>>>接收消息，发送人:" + from)
+                        Log.e(TAG, "newIncomingMessage>>>>>>>接收消息，消息内容_body:" + message?.body)
+                        Log.e(TAG, "newIncomingMessage>>>>>>>接收消息，消息内容_bodyLanguages:" + message?.bodyLanguages)
+                        Log.e(TAG, "newIncomingMessage>>>>>>>接收消息，消息内容_subject:" + message?.subject)
+
+                    }
+                })
+
+                //发送消息监听
+                ChatManager.getInstanceFor(con)?.addOutgoingListener(object : OutgoingChatMessageListener {
+                    override fun newOutgoingMessage(to: EntityBareJid?, message: Message?, chat: Chat?) {
+                        Log.e(TAG, "newOutgoingMessage>>>>>>>发送消息，接收人:" + to)
+                        Log.e(TAG, "newOutgoingMessage>>>>>>>发送消息，发送内容_body:" + message?.body)
+                        Log.e(TAG, "newOutgoingMessage>>>>>>>发送消息，发送内容_language:" + message?.language)
+                        Log.e(TAG, "newOutgoingMessage>>>>>>>发送消息，发送内容_subject:" + message?.subject)
+                    }
+                })
+                //
+            }
 
             connect()
         }
@@ -225,31 +258,24 @@ class XmppManager {
             connect?.let {
                 it?.connect()
             }
-            /*if (connect?.isConnected!!) {
-                Log.e(TAG, "connect>>>>>>>连接成功:" + connect?.isConnected)
-
-            } else {//连接服务器失败
-                Log.e(TAG, ">>>>>>>连接失败:" + connect?.isConnected)
-
-            }*/
         }
 
         /**
          * 注册账号
          *
          * name -- the user's name.
-        first -- the user's first name.
-        last -- the user's last name.
-        email -- the user's email address.
-        city -- the user's city.
-        state -- the user's state.
-        zip -- the user's ZIP code.
-        phone -- the user's phone number.
-        url -- the user's website.
-        date -- the date the registration took place.
-        misc -- other miscellaneous information to associate with the account.
-        text -- textual information to associate with the account.
-        remove -- empty flag to remove account.
+         * first -- the user's first name.
+         * last -- the user's last name.
+         * email -- the user's email address.
+         * city -- the user's city.
+         * state -- the user's state.
+         * zip -- the user's ZIP code.
+         * phone -- the user's phone number.
+         * url -- the user's website.
+         * date -- the date the registration took place.
+         * misc -- other miscellaneous information to associate with the account.
+         * text -- textual information to associate with the account.
+         * remove -- empty flag to remove account.
          */
         fun register(userName: String, passWord: String) {
             try {
@@ -259,10 +285,7 @@ class XmppManager {
                     Log.e(TAG, ">>>>>>>服务器是否支持注册:" + accountManager?.supportsAccountCreation())
                     if (accountManager?.supportsAccountCreation()!!) {
                         var attributes = mutableMapOf<String, String>()
-                        attributes?.put("username", userName)
-                        attributes?.put("password", passWord)
-                        attributes?.put("name", "戎泽峰")
-                        attributes?.put("name", "戎泽峰")
+                        attributes?.put("name", "小明")
                         attributes?.put("email", "123@qq.com")
                         attributes?.put("first", "first")
                         attributes?.put("last", "last")
@@ -279,12 +302,6 @@ class XmppManager {
                         var reg = accountManager?.createAccount(Localpart.from(userName), passWord)
                         registerId = reg?.packetID!!
 //                        accountManager?.createAccount(Localpart.from(userName), passWord, attributes)
-                        //创建字节收集器
-                        var collector = connect?.createStanzaCollector(PacketIDFilter(reg?.packetID))
-                        Log.e(TAG, ">>>>>>>注册操作数据包packetID:" + reg?.packetID)
-                        Log.e(TAG, ">>>>>>>注册操作数据包stanzaId:" + reg?.stanzaId)
-
-
                     } else {
                         Log.e(TAG, ">>>>>>>服务器不支持注册账号:")
                     }
@@ -317,10 +334,87 @@ class XmppManager {
             }
         }
 
+        /**
+         * 登录
+         */
         fun login(userName: String, passWord: String) {
             if (connect?.isConnected!!) {
                 connect?.login(userName, passWord)
             }
+        }
+
+
+        /**
+         * Author: mzf
+         * Date: 2018/7/31
+         * Description:添加好友
+         * param userName :用户名
+         * param nickname :昵称
+         */
+        fun addFriend(userName: String, nickname: String): Boolean {
+            connect?.let {
+                try {
+                    Roster.getInstanceFor(it)?.createEntry(JidCreate.bareFrom(userName), nickname, null)
+                    return true
+                } catch (e: Exception) {
+
+                }
+            }
+
+            return false
+        }
+
+
+        /**
+         * Author: mzf
+         * Date: 2018/7/31
+         * Description:删除好友
+         * param entry :好友列表中的条目
+         *
+         */
+        fun deleteFriend(entry: RosterEntry) {
+            connect?.let {
+                Roster.getInstanceFor(it)?.removeEntry(entry)
+            }
+        }
+
+        /**
+         * Author: mzf
+         * Date: 2018/7/31
+         * Description:获取好友列表
+         */
+        fun getFriends(): MutableList<RosterEntry>? {
+//        fun getFriends(): MutableSet<RosterEntry>? {
+            connect?.let { con ->
+                Roster.getInstanceFor(con)?.entries?.let { entries ->
+                    var list = mutableListOf<RosterEntry>()
+                    entries?.forEach {
+                        list?.add(it)
+                    }
+                    return list
+                }
+            }
+            return null
+        }
+
+        /**
+         * Author: mzf
+         * Date: 2018/7/31
+         * Description:发送消息
+         * param jid :目标对象的用户名
+         *
+         */
+        fun sendMessage(jid: EntityBareJid): Chat? {
+//        fun sendMessage(jid: String): Chat? {
+            Log.e(TAG, ">>>>>>>jid是不是isEmpty:" + jid?.isEmpty())
+            connect?.let { con ->
+                ChatManager.getInstanceFor(con)?.chatWith(jid)?.let { chat ->
+                    //                ChatManager.getInstanceFor(con)?.chatWith(JidCreate.entityBareFrom(jid))?.let { chat ->
+                    chat?.send("hello word")
+                    return chat
+                }
+            }
+            return null
         }
     }
 

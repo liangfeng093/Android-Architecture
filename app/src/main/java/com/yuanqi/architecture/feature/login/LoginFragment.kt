@@ -2,6 +2,7 @@ package com.yuanqi.architecture.feature.login
 
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,7 +11,10 @@ import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
 import com.yuanqi.architecture.im.XmppManager
 import com.yuanqi.architecture.main.ChangeFragmentEvent
+import kotlinx.android.synthetic.main.fragment_login.*
 import org.greenrobot.eventbus.EventBus
+import org.jivesoftware.smack.roster.RosterEntry
+import org.jxmpp.jid.impl.JidCreate
 
 /**
  * Created by mzf on 2018/7/17.
@@ -19,11 +23,17 @@ import org.greenrobot.eventbus.EventBus
  */
 class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.View {
 
+    val TAG = this.javaClass.name
+
     var et_user_name: EditText? = null
     var et_pwd: EditText? = null
     var btn_login: Button? = null
     var btn_clear_pwd: Button? = null
     var btn_register: Button? = null
+    var btn_add_friend: Button? = null
+    var btn_delete_friend: Button? = null
+    var btn_get_friends: Button? = null
+    var btn_send_message: Button? = null
 
     var isShowPwd = false
 
@@ -49,16 +59,42 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
         btn_login = view?.findViewById(R.id.btn_login)
         btn_clear_pwd = view?.findViewById(R.id.btn_clear_pwd)
         btn_register = view?.findViewById(R.id.btn_register)
+        btn_add_friend = view?.findViewById(R.id.btn_add_friend)
+        btn_delete_friend = view?.findViewById(R.id.btn_delete_friend)
+        btn_get_friends = view?.findViewById(R.id.btn_get_friends)
+        btn_send_message = view?.findViewById(R.id.btn_send_message)
     }
 
     override fun initData() {
         mPresenter?.start()
     }
 
+    var deleteEntry: RosterEntry? = null
+
     override fun initListener() {
+        btn_send_message?.setOnClickListener {
+            XmppManager.sendMessage(JidCreate.entityBareFrom("xzl@openfirewebsever"))
+//            XmppManager.sendMessage("xzl")
+        }
+        btn_get_friends?.setOnClickListener {
+            var friends = XmppManager.getFriends()
+            friends?.forEach {
+                Log.e(TAG, ">>>>>>>好友列表:" + it?.jid)
+                if (it?.jid?.equals("mzf")!!) {
+                    deleteEntry = it
+                }
+            }
+        }
+        btn_delete_friend?.setOnClickListener {
+            XmppManager.deleteFriend(deleteEntry!!)
+        }
+        btn_add_friend?.setOnClickListener {
+            XmppManager.addFriend("xzl", "")
+            XmppManager.addFriend("rzf", "")
+        }
         btn_login?.setOnClickListener {
-//            XmppManager.login("rzf","123")
-            XmppManager.login("xzl","123")
+            //            XmppManager.login("rzf","123")
+            XmppManager.login("mzf", "123")
             /*var userName = et_user_name?.text?.trim()?.toString()
             var pwd = et_pwd?.text?.trim()?.toString()
             if (userName != null && pwd != null) {
