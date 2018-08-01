@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sv_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
@@ -13,11 +14,11 @@
         <cn.levey.bannerlib.RxBanner
             android:id="@+id/rx_banner"
             android:layout_width="match_parent"
-            app:rb_indicator_radius="3dp"
             android:layout_height="150dp"
             app:rb_autoPlay="true"
             app:rb_canSwipe="true"
             app:rb_indicator_layout_gravity="center_horizontal|bottom"
+            app:rb_indicator_radius="3dp"
             app:rb_timeInterval="3000" />
 
         <include layout="@layout/home_one_level" />

@@ -10,7 +10,7 @@ apply plugin: 'kotlin-kapt' // required for kotlin.
 android {
     compileSdkVersion compile_sdk_version
     defaultConfig {
-        applicationId "com.yuanqi.architecture"
+        applicationId "com.yuanqi.yiwanjia"
         //具体配置在根目录下的build.gradle中查看
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
@@ -101,4 +101,6 @@ dependencies {
     //图片加载
     implementation 'com.github.bumptech.glide:glide:4.1.1'
 
+    //高德定位
+    implementation 'com.amap.api:location:latest.integration'
 }
