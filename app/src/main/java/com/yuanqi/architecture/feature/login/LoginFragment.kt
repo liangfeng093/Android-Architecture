@@ -34,6 +34,7 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
     var btn_delete_friend: Button? = null
     var btn_get_friends: Button? = null
     var btn_send_message: Button? = null
+    var btn_massage_list: Button? = null
 
     var isShowPwd = false
 
@@ -63,6 +64,7 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
         btn_delete_friend = view?.findViewById(R.id.btn_delete_friend)
         btn_get_friends = view?.findViewById(R.id.btn_get_friends)
         btn_send_message = view?.findViewById(R.id.btn_send_message)
+        btn_massage_list = view?.findViewById(R.id.btn_massage_list)
     }
 
     override fun initData() {
@@ -72,6 +74,9 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
     var deleteEntry: RosterEntry? = null
 
     override fun initListener() {
+        btn_massage_list?.setOnClickListener {
+            EventBus.getDefault().post(ChangeFragmentEvent())
+        }
         btn_send_message?.setOnClickListener {
             XmppManager.sendMessage(JidCreate.entityBareFrom("xzl@openfirewebsever"))
 //            XmppManager.sendMessage("xzl")

@@ -9,6 +9,7 @@ import com.yuanqi.architecture.app.App
 import com.yuanqi.architecture.base.BaseFragment
 import com.yuanqi.architecture.feature.login.LoginFragment
 import com.yuanqi.architecture.feature.register.RegisterFragment
+import com.yuanqi.architecture.feature.talk.TalkFragment
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -37,9 +38,10 @@ class MainActivity : AppCompatActivity() {
     @Subscribe
     fun changeFragment(event: ChangeFragmentEvent) {
         var transaction = supportFragmentManager?.beginTransaction()
-        var registerFragment = RegisterFragment()
-        fragments?.add(registerFragment)
-        transaction?.replace(R.id.fl_fragment_container, registerFragment)
+//        var registerFragment = RegisterFragment()
+        var fragment = TalkFragment("mzf")
+//        fragments?.add(registerFragment)
+        transaction?.replace(R.id.fl_fragment_container, fragment)
         transaction?.commit()
     }
 

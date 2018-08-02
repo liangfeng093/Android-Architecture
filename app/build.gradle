@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt' // required for kotlin.
 
-
 android {
     compileSdkVersion compile_sdk_version
     defaultConfig {
@@ -94,10 +93,12 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
     //xmpp即时通讯包
-    compile 'org.igniterealtime.smack:smack-android-extensions:4.2.0'
-    compile 'org.igniterealtime.smack:smack-experimental:4.2.0'
-    compile 'org.igniterealtime.smack:smack-tcp:4.2.0'
+    implementation 'org.igniterealtime.smack:smack-android-extensions:4.2.0'
+    implementation 'org.igniterealtime.smack:smack-experimental:4.2.0'
+    implementation 'org.igniterealtime.smack:smack-tcp:4.2.0'
 
     //xml解析
-    compile 'com.github.smart-fun:XmlToJson:1.4.4'
+    implementation 'com.github.smart-fun:XmlToJson:1.4.4'
+    //即时通讯列表
+    implementation 'cn.jiguang.imui:messagelist:0.7.2'
 }

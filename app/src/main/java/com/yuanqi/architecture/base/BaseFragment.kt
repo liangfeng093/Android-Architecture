@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yuanqi.architecture.feature.demo.DemoPresenter
 
 /**
  * Created by mzf on 2018/7/13.
@@ -14,17 +13,18 @@ import com.yuanqi.architecture.feature.demo.DemoPresenter
  */
 abstract class BaseFragment<T> : Fragment(), IBaseFragmentView<T> {
     var mPresenter: T? = null
+//    var unbinder:Unbinder?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater!!.inflate(getLayout(), container, false)
         initView(view)
         initData()
         initListener()
         return view
     }
-
 }

@@ -67,5 +67,12 @@
         android:layout_below="@+id/btn_get_friends"
         android:text="@string/register_send_message" />
 
+    <Button
+        android:id="@+id/btn_massage_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_send_message"
+        android:text="@string/register_message_list" />
+
 
 </RelativeLayout>
