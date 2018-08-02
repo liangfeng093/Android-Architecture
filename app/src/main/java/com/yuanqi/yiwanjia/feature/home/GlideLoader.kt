@@ -18,9 +18,9 @@ class GlideLoader : RxBannerLoaderInterface<ImageView> {
     }
 
     override fun show(context: Context?, path: Any?, iv: ImageView?) {
-        Glide.with(context)
+        Glide.with(context!!)
                 ?.load(path)
                 ?.apply(RequestOptions.centerCropTransform())
-                ?.into(iv)
+                ?.into(iv!!)
     }
 }

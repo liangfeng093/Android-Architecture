@@ -1,5 +1,7 @@
 package com.yuanqi.yiwanjia.feature.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -9,6 +11,9 @@ import android.webkit.*
 import com.yuanqi.yiwanjia.R
 import com.yuanqi.yiwanjia.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_web.*
+import android.content.ComponentName
+
+
 
 /**
  * Created by mzf on 2018/7/10.
@@ -71,7 +76,24 @@ class WebActivity : AppCompatActivity() {
         }*/
 
         web_view?.webViewClient = object : WebViewClient() {
+
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                Log.e(TAG, ">>>>>>>网页链接:" + url)
+                //拦截微信支付链接
+                if (url?.contains("open.weixin")!!) {
+                    Log.e(TAG,">>>>>>>微信链接:")
+                    var intent = Intent()
+                    intent.setAction(Intent.ACTION_VIEW)
+                    intent.setData(Uri.parse(url))
+                    startActivity(intent)
+
+
+                    return true
+                }
+                return super.shouldOverrideUrlLoading(view, url)
+            }
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+
                 return super.shouldOverrideUrlLoading(view, request)
             }
         }
@@ -97,7 +119,7 @@ class WebActivity : AppCompatActivity() {
         settings?.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK//优先使用缓存
 
 //        web_view?.loadUrl(baiDuUrl)
-        Log.e(TAG, ">>>>>>>url:" +url)
+        Log.e(TAG, ">>>>>>>url:" + url)
         web_view?.loadUrl(url)
 //        web_view?.loadUrl(testUrl)
 //        web_view?.loadUrl("http://t1451test.1451cn.com/Micro/homepage.html?value=20170913180403@20170622001")

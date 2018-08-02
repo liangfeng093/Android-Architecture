@@ -103,4 +103,14 @@ dependencies {
 
     //高德定位
     implementation 'com.amap.api:location:latest.integration'
+    //功能库（Zxing扫描与生成二维码条形码 支付宝 微信）
+//    implementation "com.github.vondear.RxTool:RxFeature:v2.0.4"
+    //UI库
+//    implementation "com.github.vondear.RxTool:RxUI:v2.0.4"
+    //基础工具库
+//    implementation "com.github.vondear.RxTool:RxKit:v2.0.4"
+
+    //二维码扫描
+//    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.5'
 }

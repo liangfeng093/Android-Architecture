@@ -3,9 +3,9 @@ package com.yuanqi.yiwanjia.app
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
-import com.raizlabs.android.dbflow.config.FlowManager
 import com.raizlabs.android.dbflow.config.DatabaseConfig
 import com.raizlabs.android.dbflow.config.FlowConfig
+import com.raizlabs.android.dbflow.config.FlowManager
 
 
 /**
@@ -33,6 +33,8 @@ class App : MultiDexApplication() {
                 .build())
 
 
+        //初始化
+//        RxTool.init(this)
     }
 
     companion object {

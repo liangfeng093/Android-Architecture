@@ -16,6 +16,7 @@ import com.yuanqi.yiwanjia.`interface`.Actions
 import com.yuanqi.yiwanjia.`interface`.Actions.Companion.LOCATION_REQUEST_CODE
 import com.yuanqi.yiwanjia.feature.home.HomeFragment
 import com.yuanqi.yiwanjia.feature.location.LocationService
+import com.yuanqi.yiwanjia.feature.scancode.ScanCodeActivity
 import kotlinx.android.synthetic.main.action_bar.*
 import kotlinx.android.synthetic.main.search_bar.*
 
@@ -28,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         search_container?.setOnClickListener {
             et_search?.focusable = EditText.FOCUSABLE
 
+        }
+
+        rl_scan_container?.setOnClickListener {
+            //            startActivity(Intent(this@MainActivity, ActivityScanerCode::class.java))
+            startActivity(Intent(this@MainActivity, ScanCodeActivity::class.java))
         }
         var transaction = supportFragmentManager?.beginTransaction()
 //        transaction?.replace(R.id.fl_fragment_container, LoginFragment())

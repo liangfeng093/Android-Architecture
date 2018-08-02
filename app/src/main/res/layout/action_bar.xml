@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/rl_location_container"
         android:layout_width="54dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_location"
@@ -36,7 +37,8 @@
         android:id="@+id/rl_scan_container"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_scan_code"
