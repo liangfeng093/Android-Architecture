@@ -101,4 +101,6 @@ dependencies {
     implementation 'com.github.smart-fun:XmlToJson:1.4.4'
     //即时通讯列表
     implementation 'cn.jiguang.imui:messagelist:0.7.2'
+    //图片加载
+    implementation 'com.github.bumptech.glide:glide:4.1.1'
 }

@@ -2,6 +2,7 @@ package com.yuanqi.architecture.feature.talk
 
 import android.annotation.SuppressLint
 import android.view.View
+import cn.jiguang.imui.commons.models.IMessage
 import cn.jiguang.imui.messages.MessageList
 import cn.jiguang.imui.messages.MsgListAdapter
 import com.yuanqi.architecture.R
@@ -48,7 +49,7 @@ class TalkFragment : BaseFragment<TalkContract.Presenter>, TalkContract.View {
 
     override fun initView(view: View) {
         msg_list = view?.findViewById(R.id.msg_list)
-        adapter = MsgListAdapter(senderId, ImgLoader())
+        adapter = MsgListAdapter(senderId, ImgLoader(activity))
         msg_list?.setAdapter(adapter)
 
         var testMessages = mutableListOf<Message>()
@@ -61,6 +62,18 @@ class TalkFragment : BaseFragment<TalkContract.Presenter>, TalkContract.View {
             adapter?.addToStart(message, true)
             i++
         }
+
+        while (i < 20) {
+            var message = Message()
+            message?.content = i?.toString()
+            message?.from = User()
+            message?.from?.headImgUrl = headImgUrl
+            message?.status = IMessage.MessageStatus.RECEIVE_GOING
+            message?.messageType =
+            adapter?.addToStart(message, true)
+            i++
+        }
+
 
 
     }
