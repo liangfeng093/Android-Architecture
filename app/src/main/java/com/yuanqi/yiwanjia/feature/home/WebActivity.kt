@@ -8,11 +8,10 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.webkit.*
+import android.widget.Toast
 import com.yuanqi.yiwanjia.R
 import com.yuanqi.yiwanjia.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_web.*
-import android.content.ComponentName
-
 
 
 /**
@@ -31,6 +30,9 @@ class WebActivity : AppCompatActivity() {
         var url = ""
         var flag = intent?.getStringExtra(JumpFlags.FLAG)
         when (flag) {
+            JumpFlags.HOSPITAL -> {
+                url = RetrofitService.hospital
+            }
             JumpFlags.RESERVATION_REGISTER -> {
                 url = RetrofitService.one_level_reservation_register_url
             }
@@ -66,35 +68,24 @@ class WebActivity : AppCompatActivity() {
             }
 //            JumpFlags.->{}
         }
-        /*root_view?.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-            if (bottom - oldBottom < -1) {
-                //软键盘弹上去了,动态设置高度为0
-                var params = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 0)
-                params?.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-
-            }
-        }*/
 
         web_view?.webViewClient = object : WebViewClient() {
-
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 Log.e(TAG, ">>>>>>>网页链接:" + url)
                 //拦截微信支付链接
-                if (url?.contains("open.weixin")!!) {
-                    Log.e(TAG,">>>>>>>微信链接:")
-                    var intent = Intent()
-                    intent.setAction(Intent.ACTION_VIEW)
-                    intent.setData(Uri.parse(url))
-                    startActivity(intent)
-
-
-                    return true
+                if (url?.contains("weixin://wap/pay")!!) {
+                    Log.e(TAG, ">>>>>>>微信链接:")
+                    if (isWxAvailable()) {
+                        var intent = Intent()
+                        intent.setAction(Intent.ACTION_VIEW)
+                        intent.setData(Uri.parse(url))
+                        startActivity(intent)
+                        return true
+                    } else {
+                        Toast.makeText(this@WebActivity, "请安装微信后，再进行支付操作", Toast.LENGTH_LONG).show()
+                    }
                 }
                 return super.shouldOverrideUrlLoading(view, url)
-            }
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-
-                return super.shouldOverrideUrlLoading(view, request)
             }
         }
         web_view?.webChromeClient = object : WebChromeClient() {
@@ -158,5 +149,26 @@ class WebActivity : AppCompatActivity() {
         super.onBackPressed()
 
     }
+
+
+    /**
+     * 手机是否安装微信
+     */
+    fun isWxAvailable(): Boolean {
+        var packages = packageManager.getInstalledPackages(0)
+        if (packages != null) {
+            packages?.forEach {
+                var packageName = it?.packageName
+                Log.e(TAG, ">>>>>>>packageName:" + packageName)
+                if (packageName?.endsWith("com.tencent.mm", true)!!) {
+                    Log.e(TAG, ">>>>>>>微信包名:" + packageName)
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
+
 
 }

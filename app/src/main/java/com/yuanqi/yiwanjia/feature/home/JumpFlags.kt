@@ -10,6 +10,8 @@ class JumpFlags {
 
         val FLAG = "JumpFlag"
 
+        val HOSPITAL = "HOSPITAL"
+
         val RESERVATION_REGISTER = "RESERVATION_REGISTER"
         val TODAY_REGISTER ="TODAY_REGISTER"
         val OUTPATIENT_PAYMENT ="OUTPATIENT_PAYMENT"

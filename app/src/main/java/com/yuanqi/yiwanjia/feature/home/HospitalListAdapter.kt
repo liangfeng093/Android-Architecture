@@ -18,7 +18,9 @@ class HospitalListAdapter : BaseQuickAdapter<Hospital, BaseViewHolder> {
     constructor(context: Context?, layoutResId: Int, data: MutableList<Hospital>?) : super(layoutResId, data) {
         this.context = context
         this.setOnItemClickListener { adapter, view, position ->
-            context?.startActivity(Intent(context, WebActivity::class.java))
+            var intent = Intent(context, WebActivity::class.java)
+            intent?.putExtra(JumpFlags.FLAG, JumpFlags.HOSPITAL)
+            context?.startActivity(intent)
         }
     }
 
