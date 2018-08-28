@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.jakewharton.rxbinding2.view.RxView
 import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
 
@@ -51,7 +52,33 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
     }
 
     override fun initListener() {
-        btn_login?.setOnClickListener {
+        RxView.clicks(btn_login as Button)
+                ?.subscribe {
+                    var userName = et_user_name?.text?.trim()?.toString()
+                    var pwd = et_pwd?.text?.trim()?.toString()
+                    if (userName != null && pwd != null) {
+                        if (userName?.isEmpty()!!) {//账号未填写，提示用户
+                            Toast.makeText(context, context?.resources?.getString(R.string.login_user_name_tip), Toast.LENGTH_LONG).show()
+                            return@subscribe
+                        }
+                        if (pwd?.isEmpty()!!) {//密码未填写，提示用户
+                            Toast.makeText(context, context?.resources?.getString(R.string.login_pwd_tip), Toast.LENGTH_LONG).show()
+                            return@subscribe
+                        }
+                        //对数据做好处理，避免后续逻辑做重复判断
+                        mPresenter?.login(userName, pwd)
+                    }
+                }
+
+        RxView.clicks(btn_clear_pwd as Button)
+                ?.subscribe {
+                    if (isShowPwd) {
+                        hidePwd()
+                    } else {
+                        showPwd()
+                    }
+                }
+        /*btn_login?.setOnClickListener {
             var userName = et_user_name?.text?.trim()?.toString()
             var pwd = et_pwd?.text?.trim()?.toString()
             if (userName != null && pwd != null) {
@@ -67,14 +94,14 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
                 mPresenter?.login(userName, pwd)
             }
         }
-
-        btn_clear_pwd?.setOnClickListener {
+*/
+        /*btn_clear_pwd?.setOnClickListener {
             if (isShowPwd) {
                 hidePwd()
             } else {
                 showPwd()
             }
-        }
+        }*/
     }
 
     override fun loginIng() {

@@ -9,9 +9,6 @@ import com.yuanqi.architecture.network.RemoteDateManger
  */
 interface IDataSource {
 
-//    fun getLocalDataManager()
-
-//    fun getRemoteDataManager(): RemoteDateManger
 
     /**
      * 加载数据回调(web数据)

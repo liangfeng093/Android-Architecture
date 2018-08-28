@@ -52,4 +52,6 @@ ext {
 
     lifecycle_version = "1.1.0"//生命周期感知组件
     rxbinding_version = "2.1.1"//生命周期感知组件
+
+    room_version = "1.1.1"
 }
