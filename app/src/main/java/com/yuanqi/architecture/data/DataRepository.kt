@@ -32,16 +32,17 @@ class DataRepository(val remoteDataSource: IDataSource, val localDataSource: IDa
         //缓存没有数据，从数据库获取
         localDataSource?.getData(dataId, object : IDataSource.GetDataCallback {
             override fun onSuccess(dataId: String, data: Any) {
-                //处理数据
+                //处理数据(缓存到内存当中)
 
                 //回调函数
                 callback?.onSuccess(dataId, data)
             }
 
             override fun onFail() {
+                //数据库没有目标数据
                 remoteDataSource?.getData(object : IDataSource.LoadDataCallback {
                     override fun onSuccess(dataId: String, data: Any) {
-                        //处理数据
+                        //处理数据(缓存到内存，数据库中)
 
                         //回调函数
                         callback?.onSuccess(dataId, data)
@@ -50,14 +51,10 @@ class DataRepository(val remoteDataSource: IDataSource, val localDataSource: IDa
                     override fun onFail() {
                         callback?.onFail()
                     }
-
-
                 })
             }
 
         })
-
-
     }
 
     private fun getDataWithId(dataId: String): Any? {

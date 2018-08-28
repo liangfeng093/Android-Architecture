@@ -16,7 +16,7 @@ android {
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
         multiDexEnabled true    //分包合并
     }
     buildTypes {
@@ -53,7 +53,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
     //单元测试时打开注释
-    androidTestImplementation 'com.android.support.test:runner:0.4'
+//    androidTestImplementation 'com.android.support.test:runner:0.4'
 
     //单元测试时打开注释
 
@@ -80,6 +80,19 @@ dependencies {
     //管理Rxjava的生命周期
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
+    //Rxbinding
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxbinding_version"
+
+    //RxPermissions(权限)
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    //Rx网络监听库
+    implementation 'com.github.pwittchen:reactivenetwork-rx2:2.1.0'
+
+
     //日志拦截器
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
@@ -90,35 +103,10 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 
-    //加密解密用到的jar包
-
-    //    compile files('libs/encrypthelper-1.6.0.jar')
-
-    //    compile files('libs/jackson-all-1.8.3.jar')
-
-    //    compile files('libs/jdom-1.0.jar')
-
-    //    compile files('libs/opencsv-1.7.jar')
-
-    //    compile files('libs/pnb50client-1.7.9.jar')
-
-    //    compile files('libs/pnblog.jar')
-
-    //    compile files('libs/hessdroid.jar')
-    compile 'cn.ty:encrypthelper:1.6.0'
-    compile 'cn.ty:pnblog:1.0.0'
-
-    //        compile 'cn.ty:pnb50client:1.7.9'
-    compile 'jdom:jdom:1.1'
-    compile 'au.com.bytecode:opencsv:2.4'
-    compile 'org.codehaus.jackson:jackson-xc:1.8.0'
-
-    // https://mvnrepository.com/artifact/com.caucho/hessian
-
-    //    compile 'com.caucho:hessian:4.0.51'
-    implementation files('libs/commons-codec-1.11.jar')
-
-    //    implementation files('libs/hessian-3.1.5.jar')
-    implementation files('libs/pnb50clientdroid-1.1.1.jar')
-    implementation files('libs/hessdroid.jar')
+    //
+//    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    // Java8 support for Lifecycles
+    implementation "android.arch.lifecycle:common-java8:$lifecycle_version"
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 }

@@ -1,10 +1,6 @@
 package com.yuanqi.architecture.network
 
 import android.util.Log
-import com.yuanqi.architecture.feature.demo.TestBody
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -87,25 +83,5 @@ class RemoteDateManger {
             }
             return remoteDataManager
         }
-
-
-        fun idiomDictionary(word: String, observable: Observers.IdiomDictionaryObserver) {
-            var body = TestBody(word, "3271718628314bcf451ba32aba5c014f")
-            Log.e(TAG, ">>>>>>>body:" + body)
-            retrofit?.idiomDictionary(body)
-                    ?.subscribeOn(Schedulers.io())//IO线程订阅
-                    ?.observeOn(AndroidSchedulers.mainThread())//主线程回调
-                    ?.subscribe(observable)
-        }
-
-        fun idiomDictionary1(word: String, observable: Observers.IdiomDictionaryObserver) {
-            retrofit?.idiomDictionary1("一叶知秋", "3271718628314bcf451ba32aba5c014f")
-                    ?.subscribeOn(Schedulers.io())//IO线程订阅
-                    ?.observeOn(AndroidSchedulers.mainThread())//主线程回调
-                    ?.subscribe(observable)
-        }
-
-
     }
-
 }
