@@ -1,11 +1,8 @@
 package com.yuanqi.architecture
 
 import android.support.test.runner.AndroidJUnit4
-import android.util.Log
 import com.raizlabs.android.dbflow.sql.language.SQLite
-import com.yuanqi.architecture.feature.demo.User
 import com.yuanqi.architecture.feature.demo.User_Table
-import org.junit.Test
 import org.junit.runner.RunWith
 
 /**

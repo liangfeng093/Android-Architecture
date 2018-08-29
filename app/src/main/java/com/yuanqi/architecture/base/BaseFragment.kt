@@ -19,12 +19,21 @@ abstract class BaseFragment<T> : Fragment(), IBaseFragmentView<T> {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater!!.inflate(getLayout(), container, false)
         initView(view)
         initData()
         initListener()
         return view
     }
+
+    /*override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater!!.inflate(getLayout(), container, false)
+        initView(view)
+        initData()
+        initListener()
+        return view
+    }
+*/
 
 }

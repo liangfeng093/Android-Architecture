@@ -2,7 +2,6 @@ package com.yuanqi.architecture.feature.demo.room
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.yuanqi.architecture.data.IDataSource
 
 /**
  * Created by mzf on 2018/8/28.

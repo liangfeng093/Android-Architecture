@@ -1,10 +1,5 @@
 package com.yuanqi.architecture.network
 
-import com.yuanqi.architecture.feature.demo.TestBean_IdiomDictionary
-import com.yuanqi.architecture.feature.demo.TestBody
-import io.reactivex.Observable
-import retrofit2.http.*
-
 /**
  * Created by mzf on 2018/7/13.
  * Email:liangfeng093@gmail.com
@@ -19,15 +14,5 @@ interface RetrofitService {
         val imgUrl = BaseURL + "img/"//图片的加载路径
     }
 
-    /**
-     * 测试接口
-     * 聚合数据接口:成语词典
-     */
-    @POST("chengyu/query")
-    fun idiomDictionary(@Body body: TestBody): Observable<TestBean_IdiomDictionary>
-
-    @FormUrlEncoded
-    @POST("chengyu/query")
-    fun idiomDictionary1(@Field("word") word: String,@Field("key") key: String): Observable<TestBean_IdiomDictionary>
 
 }

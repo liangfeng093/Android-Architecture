@@ -10,7 +10,8 @@ import io.reactivex.Flowable
  * Email:liangfeng093@gmail.com
  * Desc:main主界面的数据模型(持有本地和远程两个数据源)
  */
-class MainViewModel(private val dataSource: LocalDao, private val remoteDataSource: IDataSource) : ViewModel() {
+class MainViewModel(private val dataSource: LocalDao, private val remoteDataSource: RemoteDataSource) : ViewModel() {
+//class MainViewModel(private val dataSource: LocalDao, private val remoteDataSource: IDataSource) : ViewModel() {
 
     fun getStudentName(id: String): Flowable<String> {
         return dataSource?.getStudentById("1")

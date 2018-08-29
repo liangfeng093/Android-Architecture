@@ -4,7 +4,6 @@ import android.util.Log
 import com.google.gson.Gson
 import com.raizlabs.android.dbflow.sql.language.SQLite
 import com.yuanqi.architecture.feature.demo.TestRequestBody
-import com.yuanqi.architecture.feature.demo.User
 import org.junit.Test
 
 import org.junit.Assert.*

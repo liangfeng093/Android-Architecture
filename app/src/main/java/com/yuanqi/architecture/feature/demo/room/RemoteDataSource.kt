@@ -10,7 +10,7 @@ import com.yuanqi.architecture.data.IDataSource
  * Desc:某个功能模块的数据仓库(使用了三级缓存的机制)
  * 每个功能模块都以自己的数据仓库
  */
-class RemoteDataSource : IDataSource {
+class RemoteDataSource {
 //abstract class RemoteDataSource(val remoteDataSource: IDataSource) : IDataSource {
 
 
@@ -26,30 +26,4 @@ class RemoteDataSource : IDataSource {
         }
 
     }
-
-    override fun getData(callback: IDataSource.LoadDataCallback) {
-
-    }
-
-    override fun getData(dataId: String, callback: IDataSource.GetDataCallback) {
-
-        /*remoteDataSource?.getData(object : IDataSource.LoadDataCallback {
-            override fun onSuccess(dataId: String, data: Any) {
-                //处理数据(缓存到内存，数据库中)
-
-                //回调函数
-                callback?.onSuccess(dataId, data)
-            }
-
-            override fun onFail() {
-                callback?.onFail()
-            }
-        })*/
-    }
-
-    override fun saveData() {
-
-    }
-
-
 }

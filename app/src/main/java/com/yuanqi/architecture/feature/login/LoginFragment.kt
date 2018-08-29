@@ -3,12 +3,10 @@ package com.yuanqi.architecture.feature.login
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import com.jakewharton.rxbinding2.view.RxView
 import com.yuanqi.architecture.R
 import com.yuanqi.architecture.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_login.*
 
 /**
  * Created by mzf on 2018/7/17.
@@ -17,10 +15,6 @@ import com.yuanqi.architecture.base.BaseFragment
  */
 class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.View {
 
-    var et_user_name: EditText? = null
-    var et_pwd: EditText? = null
-    var btn_login: Button? = null
-    var btn_clear_pwd: Button? = null
 
     var isShowPwd = false
 
@@ -41,10 +35,6 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
     }
 
     override fun initView(view: View) {
-        et_user_name = view?.findViewById(R.id.et_user_name)
-        et_pwd = view?.findViewById(R.id.et_pwd)
-        btn_login = view?.findViewById(R.id.btn_login)
-        btn_clear_pwd = view?.findViewById(R.id.btn_clear_pwd)
     }
 
     override fun initData() {
@@ -52,7 +42,7 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
     }
 
     override fun initListener() {
-        RxView.clicks(btn_login as Button)
+        /*RxView.clicks(btn_login as Button)
                 ?.subscribe {
                     var userName = et_user_name?.text?.trim()?.toString()
                     var pwd = et_pwd?.text?.trim()?.toString()
@@ -77,8 +67,8 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
                     } else {
                         showPwd()
                     }
-                }
-        /*btn_login?.setOnClickListener {
+                }*/
+        btn_login?.setOnClickListener {
             var userName = et_user_name?.text?.trim()?.toString()
             var pwd = et_pwd?.text?.trim()?.toString()
             if (userName != null && pwd != null) {
@@ -94,7 +84,6 @@ class LoginFragment : BaseFragment<LoginContract.Presenter>(), LoginContract.Vie
                 mPresenter?.login(userName, pwd)
             }
         }
-*/
         /*btn_clear_pwd?.setOnClickListener {
             if (isShowPwd) {
                 hidePwd()

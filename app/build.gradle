@@ -16,7 +16,7 @@ android {
         targetSdkVersion target_sdk_version
         versionCode version_code
         versionName version_name
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//单元测试
         multiDexEnabled true    //分包合并
     }
     buildTypes {
@@ -47,51 +47,31 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
-
     //分包合并
-    compile 'com.android.support:multidex:1.0.1'
-
-    //单元测试时打开注释
-    androidTestImplementation 'com.android.support.test:runner:0.4'
-
-    //单元测试时打开注释
-
-        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
+    compile 'com.android.support:multidex:1.0.2'
     //kotlin协程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_launch_version"
-    implementation "com.android.support:appcompat-v7:$support_version"
-    implementation "com.android.support:support-v4:$support_version"
+    //材料设计包(自带v4,v7包)
     implementation "com.android.support:design:$support_version"
-
-    //材料设计包
-
-    //Rxjava+Retrofit
-
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
-
-    //Rxjava
-    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle2_version"
-
     //管理Rxjava的生命周期
+    implementation "com.trello.rxlifecycle2:rxlifecycle:$rxlifecycle2_version"
+    //Rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
     //Rxbinding
-    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbinding_version"
-//    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxbinding_version"
-//    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxbinding_version"
-//    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxbinding_version"
-//    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-design:$rxbinding_version"
+//    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rxbinding_version"
 
     //RxPermissions(权限)
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     //Rx网络监听库
     implementation 'com.github.pwittchen:reactivenetwork-rx2:2.1.0'
-
 
     //日志拦截器
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
@@ -103,14 +83,7 @@ dependencies {
     // optional - RxJava support for Room
     implementation "android.arch.persistence.room:rxjava2:$room_version"
     // Test helpers
-    testImplementation "android.arch.persistence.room:testing:$room_version"
-    // Use if Kotlin user.
-    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-
-
-
+//    testImplementation "android.arch.persistence.room:testing:$room_version"
     //
 //    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // Java8 support for Lifecycles

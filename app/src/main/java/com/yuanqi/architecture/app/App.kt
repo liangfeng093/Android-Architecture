@@ -1,12 +1,8 @@
 package com.yuanqi.architecture.app
 
-import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
-import com.raizlabs.android.dbflow.config.FlowManager
-import com.raizlabs.android.dbflow.config.DatabaseConfig
-import com.raizlabs.android.dbflow.config.FlowConfig
 
 
 /**
@@ -27,13 +23,6 @@ class App : MultiDexApplication() {
         context = this
         CrashHandler.init(this, "544935678@qq.com")
         //初始化数据库
-        FlowManager.init(FlowConfig.builder(this)
-                .addDatabaseConfig(DatabaseConfig.builder(AppDatabase::class.java)
-                        .databaseName("AppDatabase")
-                        .build())
-                .build())
-
-
     }
 
     companion object {
