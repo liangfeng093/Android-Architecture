@@ -1,17 +1,16 @@
 package com.yuanqi.architecture.feature.demo.room
 
 import android.arch.lifecycle.ViewModel
-import com.yuanqi.architecture.data.IDataSource
+import com.yuanqi.architecture.network.RemoteDateManger
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
 /**
  * Created by mzf on 2018/8/28.
  * Email:liangfeng093@gmail.com
- * Desc:main主界面的数据模型(持有本地和远程两个数据源)
+ * Desc:main主界面的数据模型(持有本地和远程两个数据源),可以直接使用数据源获取数据
  */
-class MainViewModel(private val dataSource: LocalDao, private val remoteDataSource: RemoteDataSource) : ViewModel() {
-//class MainViewModel(private val dataSource: LocalDao, private val remoteDataSource: IDataSource) : ViewModel() {
+class MainViewModel(private val dataSource: LocalDao, private val remoteDateManger: RemoteDateManger) : ViewModel() {
 
     fun getStudentName(id: String): Flowable<String> {
         return dataSource?.getStudentById("1")

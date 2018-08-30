@@ -26,14 +26,4 @@ abstract class BaseFragment<T> : Fragment(), IBaseFragmentView<T> {
         initListener()
         return view
     }
-
-    /*override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater!!.inflate(getLayout(), container, false)
-        initView(view)
-        initData()
-        initListener()
-        return view
-    }
-*/
-
 }
